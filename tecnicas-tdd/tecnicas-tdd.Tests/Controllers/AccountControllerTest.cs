@@ -9,6 +9,7 @@ using tecnicas_tdd;
 using tecnicas_tdd.Controllers;
 using tecnicas_tdd.Models;
 using tecnicas_tdd.Tests.Builders;
+using Moq;
 
 namespace tecnicas_tdd.Tests.Controllers
 {
@@ -117,6 +118,11 @@ namespace tecnicas_tdd.Tests.Controllers
 			// Arrange
 			AccountController controller = GetAccountController();
 
+			//var mock = new Mock<IFormsAuthenticationService>();
+			////mock.Setup(s => s.SignIn("someUser", false));
+			//mock.Setup(s => s.SignOut());
+			//controller.FormsService = mock.Object;
+
 			// Act
 			ActionResult result = controller.LogOff();
 
@@ -125,7 +131,8 @@ namespace tecnicas_tdd.Tests.Controllers
 			RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
 			Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
 			Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-			Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignOut_WasCalled);
+			Assert.IsTrue(((StubFormsAuthenticationService)controller.FormsService).SignOut_WasCalled);
+			//mock.VerifyAll();
 		}
 
 		[TestMethod]
@@ -161,7 +168,7 @@ namespace tecnicas_tdd.Tests.Controllers
 			RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
 			Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
 			Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-			Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
+			Assert.IsTrue(((StubFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
 		}
 
 		[TestMethod]
@@ -183,7 +190,7 @@ namespace tecnicas_tdd.Tests.Controllers
 			Assert.IsInstanceOfType(result, typeof(RedirectResult));
 			RedirectResult redirectResult = (RedirectResult)result;
 			Assert.AreEqual("/someUrl", redirectResult.Url);
-			Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
+			Assert.IsTrue(((StubFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
 		}
 
 		[TestMethod]
@@ -319,18 +326,19 @@ namespace tecnicas_tdd.Tests.Controllers
 		{
 			AccountController controller = new AccountController()
 			{
-				FormsService = new MockFormsAuthenticationService(),
-				MembershipService = new MockMembershipService()
+				FormsService = new StubFormsAuthenticationService(),
+				MembershipService = new FakeMembershipService()
 			};
 			controller.ControllerContext = new ControllerContext()
 			{
 				Controller = controller,
-				RequestContext = new RequestContext(new MockHttpContext(), new RouteData())
+				RequestContext = new RequestContext(new FakeHttpContext(), new RouteData())
 			};
 			return controller;
 		}
 
-		private class MockFormsAuthenticationService : IFormsAuthenticationService
+		// Mocks y Stubs: MockFormsAuthenticationService
+		private class StubFormsAuthenticationService : IFormsAuthenticationService
 		{
 			public bool SignIn_WasCalled;
 			public bool SignOut_WasCalled;
@@ -350,24 +358,18 @@ namespace tecnicas_tdd.Tests.Controllers
 			}
 		}
 
-		private class MockHttpContext : HttpContextBase
+		private class FakeHttpContext : HttpContextBase
 		{
 			private readonly IPrincipal _user = new GenericPrincipal(new GenericIdentity("someUser"), null /* roles */);
 
 			public override IPrincipal User
 			{
-				get
-				{
-					return _user;
-				}
-				set
-				{
-					base.User = value;
-				}
+				get { return _user; }
+				set { base.User = value; }
 			}
 		}
 
-		private class MockMembershipService : IMembershipService
+		private class FakeMembershipService : IMembershipService
 		{
 			public int MinPasswordLength
 			{
