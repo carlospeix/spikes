@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tecnicas-tdd", "tecnicas-tdd\tecnicas-tdd.csproj", "{3D893869-AD0F-421F-9507-3AC546C001EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tecnicas-tdd.Tests", "tecnicas-tdd.Tests\tecnicas-tdd.Tests.csproj", "{3A927BD5-4E62-4B34-A7A8-FF6B7F3AD083}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D893869-AD0F-421F-9507-3AC546C001EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D893869-AD0F-421F-9507-3AC546C001EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D893869-AD0F-421F-9507-3AC546C001EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D893869-AD0F-421F-9507-3AC546C001EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A927BD5-4E62-4B34-A7A8-FF6B7F3AD083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A927BD5-4E62-4B34-A7A8-FF6B7F3AD083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A927BD5-4E62-4B34-A7A8-FF6B7F3AD083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A927BD5-4E62-4B34-A7A8-FF6B7F3AD083}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
