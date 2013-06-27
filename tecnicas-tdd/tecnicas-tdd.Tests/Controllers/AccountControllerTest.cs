@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using tecnicas_tdd;
 using tecnicas_tdd.Controllers;
 using tecnicas_tdd.Models;
+using tecnicas_tdd.Tests.Builders;
 
 namespace tecnicas_tdd.Tests.Controllers
 {
