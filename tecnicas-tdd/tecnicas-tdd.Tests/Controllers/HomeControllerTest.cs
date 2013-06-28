@@ -13,24 +13,44 @@ namespace tecnicas_tdd.Tests.Controllers
 	public class HomeControllerTest
 	{
 		[TestMethod]
-		public void Index()
+		public void Index_GreetsInTheMorning()
 		{
 			// Arrange
-			HomeController controller = new HomeController();
+			HomeController controller = new HomeController(
+				new FakeClock(new DateTime(2013, 6, 27, 10, 0, 0))
+			);
 
 			// Act
 			ViewResult result = controller.Index() as ViewResult;
 
 			// Assert
 			ViewDataDictionary viewData = result.ViewData;
-			Assert.AreEqual("Welcome to ASP.NET MVC!", viewData["Message"]);
+			Assert.AreEqual("Good morning", viewData["Message"]);
+		}
+
+		[TestMethod]
+		public void Index_GreetsInTheEvening()
+		{
+			// Arrange
+			HomeController controller = new HomeController(
+				new FakeClock(new DateTime(2013, 6, 27, 14, 0, 0))
+			);
+
+			// Act
+			ViewResult result = controller.Index() as ViewResult;
+
+			// Assert
+			ViewDataDictionary viewData = result.ViewData;
+			Assert.AreEqual("Good evening", viewData["Message"]);
 		}
 
 		[TestMethod]
 		public void About()
 		{
 			// Arrange
-			HomeController controller = new HomeController();
+			HomeController controller = new HomeController(
+				new FakeClock(new DateTime(2013, 6, 27, 10, 0, 0))
+			);
 
 			// Act
 			ViewResult result = controller.About() as ViewResult;

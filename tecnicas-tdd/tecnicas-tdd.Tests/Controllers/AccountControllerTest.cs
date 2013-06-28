@@ -118,10 +118,10 @@ namespace tecnicas_tdd.Tests.Controllers
 			// Arrange
 			AccountController controller = GetAccountController();
 
-			//var mock = new Mock<IFormsAuthenticationService>();
-			////mock.Setup(s => s.SignIn("someUser", false));
-			//mock.Setup(s => s.SignOut());
-			//controller.FormsService = mock.Object;
+			var mock = new Mock<IFormsAuthenticationService>();
+			//mock.Setup(s => s.SignIn("someUser", false));
+			mock.Setup(s => s.SignOut());
+			controller.FormsService = mock.Object;
 
 			// Act
 			ActionResult result = controller.LogOff();
@@ -131,8 +131,8 @@ namespace tecnicas_tdd.Tests.Controllers
 			RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
 			Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
 			Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-			Assert.IsTrue(((StubFormsAuthenticationService)controller.FormsService).SignOut_WasCalled);
-			//mock.VerifyAll();
+			//Assert.IsTrue(((StubFormsAuthenticationService)controller.FormsService).SignOut_WasCalled);
+			mock.VerifyAll();
 		}
 
 		[TestMethod]
@@ -256,13 +256,19 @@ namespace tecnicas_tdd.Tests.Controllers
 		{
 			// Arrange
 			AccountController controller = GetAccountController();
-			RegisterModel model = new RegisterModel()
-			{
-				UserName = "someUser",
-				Email = "goodEmail",
-				Password = "goodPassword",
-				ConfirmPassword = "goodPassword"
-			};
+			//RegisterModel model = new RegisterModel()
+			//{
+			//  UserName = "someUser",
+			//  Email = "goodEmail",
+			//  Password = "goodPassword",
+			//  ConfirmPassword = "goodPassword"
+			//};
+
+			var model = new RegisterModelBuilder().
+				withUserName("someUser").
+				withEmail("goodEmail").
+				withPassword("goodPassword").
+				withConfirmPassword("goodPassword").build();
 
 			// Act
 			ActionResult result = controller.Register(model);
