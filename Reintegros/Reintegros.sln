@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reintegros.Modelo", "Modelo\Reintegros.Modelo.csproj", "{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F3056B-7378-4E38-94DD-4ED3EBC05AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC7EFF2D-A568-4D84-BB21-9AE4834F5C14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Modelo\Reintegros.Modelo.csproj
+	EndGlobalSection
+EndGlobal
