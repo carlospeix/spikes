@@ -141,5 +141,13 @@ namespace Tests
 
 			Assert.That(reintegro, Is.EqualTo(60));
 		}
+
+		[Test()]
+		public void LaReglaDebeDevolverSiempreElDecorator()
+		{
+			var regla = new Regla();
+
+			Assert.That(regla.ObtenerCriterio().GetType(), Is.EqualTo(typeof(CriterioActualizadorDeHistorialDecorator)));
+		}
 	}
 }
