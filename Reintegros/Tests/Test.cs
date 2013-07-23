@@ -94,7 +94,7 @@ namespace Tests
 				new CriterioCantidadAcumuladaEnPeriodo(2, unMes)
 			);
 
-			var adapter = new CriterioActualizadorDeHistorialAdapter(criterioConjunto);
+			var adapter = new CriterioActualizadorDeHistorialDecorator(criterioConjunto);
 
 			var reintegro1 = adapter.Calcular(contexto, new Concepto(200m));
 			var reintegro2 = adapter.Calcular(contexto, new Concepto(200m));

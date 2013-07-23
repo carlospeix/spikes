@@ -43,7 +43,7 @@
     <Compile Include="CriterioCantidadAcumuladaEnPeriodo.cs" />
     <Compile Include="CriterioMenorMonto.cs" />
     <Compile Include="CriterioH1N1.cs" />
-    <Compile Include="CriterioActualizadorDeHistorialAdapter.cs" />
+    <Compile Include="CriterioActualizadorDeHistorialDecorator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
