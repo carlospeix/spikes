@@ -26,10 +26,9 @@ namespace Reintegros.Modelo
 			return buscadorDeHistorial(periodo) + historialTemporal;
 		}
 
-		public void RegistrarReintegroTemporal(decimal reintegro)
+		public void RegistrarReintegroTemporal(Historial historialReintegro)
 		{
-			this.historialTemporal.SumarCantidad(1);
-			this.historialTemporal.SumarMonto(reintegro);
+			this.historialTemporal += historialReintegro;
 		}
 
 		public object this[string key]
