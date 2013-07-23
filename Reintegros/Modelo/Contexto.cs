@@ -5,7 +5,7 @@ namespace Reintegros.Modelo
 {
 	public class Contexto
 	{
-		Func<TimeSpan, Historial> buscadorDeHistorial;
+		Func<DateRange, Historial> buscadorDeHistorial;
 		Historial historialTemporal;
 		IDictionary<string, object> variables;
 
@@ -16,12 +16,12 @@ namespace Reintegros.Modelo
 			variables = new Dictionary<string, object>();
 		}
 
-		public void DefinirBuscadorDeHistorial(Func<TimeSpan, Historial> buscadorDeHistorial)
+		public void DefinirBuscadorDeHistorial(Func<DateRange, Historial> buscadorDeHistorial)
 		{
 			this.buscadorDeHistorial = buscadorDeHistorial;
 		}
 
-		public Historial ObtenerHistorial(TimeSpan periodo)
+		public Historial ObtenerHistorial(DateRange periodo)
 		{
 			return buscadorDeHistorial(periodo) + historialTemporal;
 		}

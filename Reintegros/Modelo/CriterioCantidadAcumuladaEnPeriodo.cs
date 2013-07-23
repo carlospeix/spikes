@@ -15,7 +15,7 @@ namespace Reintegros.Modelo
 
 		public decimal Calcular(Contexto contexto, Concepto concepto)
 		{
-			var historial = contexto.ObtenerHistorial(this.periodo);
+			var historial = contexto.ObtenerHistorial(DateRange.PasadoDesdeHoy(this.periodo));
 			var montoReintegro = cantidadMaxima <= historial.Cantidad ? 0m : concepto.MontoReclamado;
 
 			return montoReintegro;
