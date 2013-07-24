@@ -37,7 +37,7 @@ namespace Reintegros.Modelo
 			else
 				criterio = new CriterioMayorMonto(criterios);
 				
-			return new CriterioActualizadorDeHistorialDecorator(criterio);
+			return new CriterioActualizadorDeHistorialAdapter(criterio);
 		}
 	}
 }

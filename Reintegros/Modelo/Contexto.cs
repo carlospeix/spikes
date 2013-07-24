@@ -5,30 +5,32 @@ namespace Reintegros.Modelo
 {
 	public class Contexto
 	{
-		Func<DateRange, Historial> buscadorDeHistorial;
+		Func<TimeSpan, Historial> buscadorDeHistorial;
 		Historial historialTemporal;
 		IDictionary<string, object> variables;
 
 		public Contexto()
 		{
 			buscadorDeHistorial = (periodo) => new Historial(0, 0m);
-			historialTemporal = new Historial(0, 0m);
+            historialTemporal = new Historial(0, 0m);
 			variables = new Dictionary<string, object>();
 		}
 
-		public void DefinirBuscadorDeHistorial(Func<DateRange, Historial> buscadorDeHistorial)
+		public void DefinirBuscadorDeHistorial(Func<TimeSpan, Historial> buscadorDeHistorial)
 		{
 			this.buscadorDeHistorial = buscadorDeHistorial;
 		}
 
-		public Historial ObtenerHistorial(DateRange periodo)
+		public Historial ObtenerHistorial(TimeSpan periodo)
 		{
 			return buscadorDeHistorial(periodo) + historialTemporal;
 		}
 
-		public void RegistrarReintegroTemporal(Historial historialReintegro)
+		public void RegistrarReintegroTemporal(decimal reintegro, TimeSpan rango)
 		{
-			this.historialTemporal += historialReintegro;
+			this.historialTemporal.SumarCantidad(1);
+			this.historialTemporal.SumarMonto(reintegro);
+            this.historialTemporal.SumarRango(rango);
 		}
 
 		public object this[string key]

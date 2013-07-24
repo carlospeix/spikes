@@ -2,23 +2,23 @@ using System;
 
 namespace Reintegros.Modelo
 {
-	public class CriterioActualizadorDeHistorialDecorator : Criterio
-	{
-		Criterio criterioAdaptado;
-
-		public CriterioActualizadorDeHistorialDecorator(Criterio criterioAdaptado)
-		{
-			this.criterioAdaptado = criterioAdaptado;
-		}
-
-		public decimal Calcular(Contexto contexto, Concepto concepto)
-		{
-			var reintegro = criterioAdaptado.Calcular(contexto, concepto);
-
-			if (reintegro > 0)
-				contexto.RegistrarReintegroTemporal(new Historial(1, reintegro));
-
-			return reintegro;
-		}
-	}
+//	public class CriterioActualizadorDeHistorialDecorator : Criterio
+//	{
+//		Criterio criterioAdaptado;
+//
+//		public CriterioActualizadorDeHistorialDecorator(Criterio criterioAdaptado)
+//		{
+//			this.criterioAdaptado = criterioAdaptado;
+//		}
+//
+//		public decimal Calcular(Contexto contexto, Concepto concepto)
+//		{
+//			var reintegro = criterioAdaptado.Calcular(contexto, concepto);
+//
+//			// if (reintegro > 0)
+//			//	contexto.RegistrarReintegroTemporal(new Historial(1, reintegro));
+//
+//			return reintegro;
+//		}
+//	}
 }

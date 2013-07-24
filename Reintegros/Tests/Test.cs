@@ -8,12 +8,14 @@ namespace Tests
 	public class Test
 	{
 		TimeSpan unMes;
+        TimeSpan tresMeses;
 		Contexto contexto;
 
 		[SetUp]
 		public void SetUp()
 		{
 			unMes = TimeSpan.FromDays(30);
+            tresMeses = TimeSpan.FromDays(90);
 			contexto = new Contexto();
 		}
 
@@ -94,7 +96,7 @@ namespace Tests
 				new CriterioCantidadAcumuladaEnPeriodo(2, unMes)
 			);
 
-			var adapter = new CriterioActualizadorDeHistorialDecorator(criterioConjunto);
+			var adapter = new CriterioActualizadorDeHistorialAdapter(criterioConjunto);
 
 			var reintegro1 = adapter.Calcular(contexto, new Concepto(200m));
 			var reintegro2 = adapter.Calcular(contexto, new Concepto(200m));
@@ -142,12 +144,39 @@ namespace Tests
 			Assert.That(reintegro, Is.EqualTo(60));
 		}
 
-		[Test()]
-		public void LaReglaDebeDevolverSiempreElDecorator()
-		{
-			var regla = new Regla();
+        [Test()]
+        public void ReintegroBonoBioquimico100Porciento()
+        {
+            contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 0m));
+            contexto["esAfiliado"] = true;
+            Criterio criterioPorcentaje = new CriterioPorcentaje(100);
 
-			Assert.That(regla.ObtenerCriterio().GetType(), Is.EqualTo(typeof(CriterioActualizadorDeHistorialDecorator)));
-		}
+            var reintegro = criterioPorcentaje.Calcular(contexto, new Concepto(200m));
+
+            Assert.That(reintegro, Is.EqualTo(200m));
+        }
+
+        [Test()]
+        public void ReintegroAlquilerAndadorConAsiento3Meses50PeXMes()
+        {
+            contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 0m));
+
+            Criterio criterioConjunto = new CriterioMenorMonto(
+                new CriterioMontoAcumuladoEnPeriodo(50m, unMes),
+                new CriterioRango(tresMeses)
+            );
+
+            var adapter = new CriterioActualizadorDeHistorialAdapter(criterioConjunto, unMes);
+
+            var reintegro1 = adapter.Calcular(contexto, new Concepto(10m));
+            var reintegro2 = adapter.Calcular(contexto, new Concepto(10m));
+            var reintegro3 = adapter.Calcular(contexto, new Concepto(10m));
+            var reintegro4 = adapter.Calcular(contexto, new Concepto(10m));
+            
+            Assert.That(reintegro1, Is.EqualTo(10m));
+            Assert.That(reintegro2, Is.EqualTo(10m));
+            Assert.That(reintegro3, Is.EqualTo(10m));
+            Assert.That(reintegro4, Is.EqualTo(0m));
+        }
 	}
 }

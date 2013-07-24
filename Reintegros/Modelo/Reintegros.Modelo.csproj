@@ -46,7 +46,9 @@
     <Compile Include="Regla.cs" />
     <Compile Include="CriterioMayorMonto.cs" />
     <Compile Include="DateRange.cs" />
-    <Compile Include="CriterioActualizadorDeHistorialDecorator.cs" />
+    <Compile Include="CriterioActualizadorDeHistorialAdapter.cs" />
+    <Compile Include="CriterioPorcentaje.cs" />
+    <Compile Include="CriterioRango.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
