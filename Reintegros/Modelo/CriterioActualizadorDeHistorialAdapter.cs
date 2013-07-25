@@ -15,7 +15,7 @@ namespace Reintegros.Modelo
 		{
 			var reintegro = criterioAdaptado.Calcular(contexto, concepto);
 			if (reintegro > 0)
-				contexto.RegistrarReintegroTemporal(reintegro);
+				contexto.RegistrarReintegroTemporal(new Historial(1, reintegro));
 			return reintegro;
 		}
 	}

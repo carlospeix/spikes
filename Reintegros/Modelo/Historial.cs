@@ -18,19 +18,9 @@ namespace Reintegros.Modelo
 			get { return this.cantidad; }
 		}
 
-		public void SumarCantidad(int cantidad)
-		{
-			this.cantidad += cantidad;
-		}
-
 		public decimal Monto
 		{
 			get { return this.monto; }
-		}
-
-		public void SumarMonto(decimal monto)
-		{
-			this.monto += monto;
 		}
 
 		public static Historial operator +(Historial h1, Historial h2)
