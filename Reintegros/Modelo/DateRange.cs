@@ -15,6 +15,8 @@ namespace Reintegros.Modelo
 
 		public static DateRange PasadoDesdeHoy(TimeSpan periodo)
 		{
+			if (periodo.Equals(TimeSpan.MaxValue))
+				return new DateRange(DateTime.MinValue, DateTime.Today);
 			return new DateRange(DateTime.Today.Subtract(periodo), DateTime.Today);
 		}
 	}
