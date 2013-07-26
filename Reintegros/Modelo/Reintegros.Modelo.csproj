@@ -49,6 +49,7 @@
     <Compile Include="CriterioActualizadorDeHistorialAdapter.cs" />
     <Compile Include="CriterioPorcentaje.cs" />
     <Compile Include="CriterioRango.cs" />
+    <Compile Include="CriterioEdadMaxima.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
