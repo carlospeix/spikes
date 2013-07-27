@@ -36,11 +36,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
     <Compile Include="CriterioEdadMaximaTest.cs" />
     <Compile Include="CriterioMontoMaximoTest.cs" />
     <Compile Include="CriterioMontoAcumuladoEnPeriodoTest.cs" />
     <Compile Include="CriterioCantidadAcumuladaEnPeriodoTest.cs" />
+    <Compile Include="CasosEspecialesTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

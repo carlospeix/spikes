@@ -5,7 +5,7 @@ using Reintegros.Modelo;
 namespace Tests
 {
 	[TestFixture()]
-	public class Test
+	public class CasosEspecialesTest
 	{
 		TimeSpan unMes;
         TimeSpan todaLaVida;
