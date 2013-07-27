@@ -27,6 +27,15 @@ namespace Tests
 		}
 
 		[Test()]
+		public void Reintegra100PorCientoParaBeneficierioDe25Anios()
+		{
+			contexto["edad"] = 25;
+			var reintegro = criterio.Calcular(contexto, new Concepto(300m));
+
+			Assert.That(reintegro, Is.EqualTo(300m));
+		}
+
+		[Test()]
 		public void NoReintegraParaBeneficierioDe35Anios()
 		{
 			contexto["edad"] = 35;
