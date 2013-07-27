@@ -5,7 +5,7 @@ using Reintegros.Modelo;
 namespace Tests
 {
 	[TestFixture()]
-	public class CriterioEdadTest
+	public class CriterioEdadMaximaTest
 	{
 		Contexto contexto;
 		Criterio criterio;
