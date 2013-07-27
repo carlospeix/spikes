@@ -148,5 +148,39 @@ namespace Tests
 			Assert.That(reintegro3, Is.EqualTo(10m));
 			Assert.That(reintegro4, Is.EqualTo(0m));
 		}
+
+		[Test()]
+		public void ReintegroPorAnteojosEnAñoCalendario()
+		{
+			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 0m));
+
+			Criterio criterioConjunto = new CriterioMenorMonto(
+				new CriterioMontoAcumuladoEnAnioCalendario(600m),
+				new CriterioCantidadAcumuladaEnAnioCalendario(2)
+			);
+
+			var adapter = new CriterioActualizadorDeHistorialAdapter(criterioConjunto);
+
+			var reintegro = adapter.Calcular(contexto, new Concepto(300m));
+
+			Assert.That(reintegro, Is.EqualTo(300m));
+		}
+
+		[Test()]
+		public void NoReintegroPorAnteojosEnAñoCalendario()
+		{
+			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(2, 500m));
+
+			Criterio criterioConjunto = new CriterioMenorMonto(
+				new CriterioMontoAcumuladoEnAnioCalendario(600m),
+				new CriterioCantidadAcumuladaEnAnioCalendario(2)
+			);
+
+			var adapter = new CriterioActualizadorDeHistorialAdapter(criterioConjunto);
+
+			var reintegro = adapter.Calcular(contexto, new Concepto(300m));
+
+			Assert.That(reintegro, Is.EqualTo(0m));
+		}
 	}
 }
