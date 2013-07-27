@@ -20,17 +20,6 @@ namespace Tests
 		}
 
 		[Test()]
-		public void ReintegraPorConsultaRemanenteCantidadMensual()
-		{
-			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(1, 200m));
-			Criterio criterio = new CriterioCantidadAcumuladaEnPeriodo(2, unMes);
-
-			var reintegro = criterio.Calcular(contexto, new Concepto(200m));
-
-			Assert.That(reintegro, Is.EqualTo(200m));
-		}
-
-		[Test()]
 		public void NoReintegraPorExcederCantidadMensualAunqueMontoAlcance()
 		{
 			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(2, 400m));
