@@ -20,26 +20,6 @@ namespace Tests
 		}
 
 		[Test()]
-		public void PagaTodoLoSolicitado()
-		{
-			Criterio criterio = new CriterioMontoMaximo(300m);
-
-			var reintegro = criterio.Calcular(contexto, new Concepto(300m));
-
-			Assert.That(reintegro, Is.EqualTo(300m));
-		}
-
-		[Test()]
-		public void ReintegraHastaUnTope()
-		{
-			Criterio criterio = new CriterioMontoMaximo(200m);
-
-			var reintegro = criterio.Calcular(contexto, new Concepto(300m));
-
-			Assert.That(reintegro, Is.EqualTo(200m));
-		}
-
-		[Test()]
 		public void NoReintegraExcederMontoMensual()
 		{
 			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 300));
