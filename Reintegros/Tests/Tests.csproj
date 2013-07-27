@@ -39,6 +39,7 @@
     <Compile Include="Test.cs" />
     <Compile Include="CriterioEdadMaximaTest.cs" />
     <Compile Include="CriterioMontoMaximoTest.cs" />
+    <Compile Include="CriterioMontoAcumuladoEnPeriodoTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

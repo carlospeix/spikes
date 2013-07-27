@@ -20,28 +20,6 @@ namespace Tests
 		}
 
 		[Test()]
-		public void NoReintegraExcederMontoMensual()
-		{
-			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 300));
-			Criterio criterio = new CriterioMontoAcumuladoEnPeriodo(300, unMes);
-
-			var reintegro = criterio.Calcular(contexto, new Concepto(10));
-
-			Assert.That(reintegro, Is.EqualTo(0));
-		}
-
-		[Test()]
-		public void ReintegraPorConsultaRemanenteMontoMensual()
-		{
-			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(0, 200m));
-			Criterio criterio = new CriterioMontoAcumuladoEnPeriodo(300m, unMes);
-
-			var reintegro = criterio.Calcular(contexto, new Concepto(200m));
-
-			Assert.That(reintegro, Is.EqualTo(100m));
-		}
-
-		[Test()]
 		public void ReintegraPorConsultaRemanenteCantidadMensual()
 		{
 			contexto.DefinirBuscadorDeHistorial((periodo) => new Historial(1, 200m));
