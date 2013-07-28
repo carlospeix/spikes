@@ -52,6 +52,7 @@
     <Compile Include="CriterioEdadMaxima.cs" />
     <Compile Include="CriterioMontoAcumuladoEnAnioCalendario.cs" />
     <Compile Include="CriterioCantidadAcumuladaEnAnioCalendario.cs" />
+    <Compile Include="CriterioPaniales.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,6 +42,7 @@
     <Compile Include="CriterioCantidadAcumuladaEnPeriodoTest.cs" />
     <Compile Include="CasosEspecialesTest.cs" />
     <Compile Include="CriteriosAcumuladosEnAnioCalendarioTest.cs" />
+    <Compile Include="CriterioPanialesTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
