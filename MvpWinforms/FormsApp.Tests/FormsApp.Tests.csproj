@@ -48,6 +48,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PresenterTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsFormsApp\FormsApp\FormsApp.csproj">
+      <Project>{00057646-CC56-4DD9-A6A4-09A6050F8118}</Project>
+      <Name>FormsApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
