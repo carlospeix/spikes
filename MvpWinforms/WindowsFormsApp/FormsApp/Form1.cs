@@ -17,6 +17,7 @@ namespace FormsApp
 		{
 			InitializeComponent();
 			_presenter = new Presenter(this);
+			_presenter.Initialize();
 		}
 
 		private void textIngresos_TextChanged(object sender, EventArgs e)
