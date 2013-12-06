@@ -1,0 +1,8 @@
+.svn
+_ReSharper*
+bin
+obj
+*.suo
+*.user
+temp
+TestResults
