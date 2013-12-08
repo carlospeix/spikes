@@ -1,20 +1,18 @@
 class Proyector
 	def initialize(timer)
 		@timer = timer
+		@ventilador_encendido = false
 	end
 
 	def encender
+		@ventilador_encendido = true
 	end
 
 	def apagar
-		@timer.iniciar(20)
+		@timer.iniciar 20, lambda { @ventilador_encendido = false }
 	end
 
 	def ventilador_encendido
-		if @timer.elapsed
-			false
-		else
-			true
-		end
+		return @ventilador_encendido
 	end
 end

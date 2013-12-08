@@ -1,13 +1,12 @@
 class TimerTest
-	def iniciar(tiempo_en_segundos)
-		@elapsed = false
+	def iniciar(tiempo_en_segundos, when_elapsed)
 		@tiempo_en_segundos = tiempo_en_segundos
-	end
-	def elapsed
-		@elapsed
+		@when_elapsed = when_elapsed
 	end
 
 	def avanzar_segundos(segundos)
-		@elapsed = segundos >= @tiempo_en_segundos
+		if segundos >= @tiempo_en_segundos
+			@when_elapsed.call
+		end
 	end
 end
