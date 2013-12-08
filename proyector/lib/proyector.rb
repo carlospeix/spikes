@@ -9,10 +9,16 @@ class Proyector
 	end
 
 	def apagar
-		@timer.iniciar 20, lambda { @ventilador_encendido = false }
+		@timer.iniciar 20, method(:apagar_ventilador)
 	end
 
 	def ventilador_encendido
 		return @ventilador_encendido
+	end
+
+	private
+
+	def apagar_ventilador
+		@ventilador_encendido = false
 	end
 end
