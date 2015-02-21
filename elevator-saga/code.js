@@ -1,8 +1,10 @@
 /*
-Esta version pasa el challenge 5, casi siempre.
+Esta version casi pasa el challenge 6, casi siempre.
 
 Es un poco burda porque envia las llamadas a todos los ascensores y
 envia el ascensor al piso 0 cuando esta idle.
+
+Lo que agrego aqui es que ordeno la cola de pedidos con cada uno.
 */
 {
     init: function(elevators, floors) {
@@ -45,6 +47,7 @@ envia el ascensor al piso 0 cuando esta idle.
             
             function askedFloorOnElevator(floorNum, elevatorNum) {
                 elevators[elevatorNum].goToFloor(floorNum);
+                updateRouteOnElevator(elevatorNum);
                 console.log("Asked floor " + floorNum + " on elevator " + elevatorNum);
             }
             
@@ -52,7 +55,27 @@ envia el ascensor al piso 0 cuando esta idle.
                 elevators[elevatorNum].goToFloor(0);
                 console.log("Elevator " + elevatorNum + "  idle");
             }
+            
+            function updateRouteOnElevator(elevatorNum) {
+                elevators[elevatorNum].destinationQueue = recalculateQueueForElevator(elevatorNum);
+                elevators[elevatorNum].checkDestinationQueue();
+            }
+            
+            function recalculateQueueForElevator(elevatorNum) {
+                return elevators[elevatorNum].destinationQueue.sort();
+            }
         };
+        
+        function ElevatorDirectionStoped(elevator) {
+        }
+        
+        function ElevatorDirectionUp(elevator) {
+            this.elevator = elevator;
+        }
+        
+        function ElevatorDirectionUp(elevator) {
+            this.elevator = elevator;
+        }
         
         var boostraper = new ElevatorsBoostraper(elevators, floors);
     },
