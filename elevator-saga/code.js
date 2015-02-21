@@ -1,5 +1,5 @@
 /*
-Esta version casi pasa el challenge 6, casi siempre.
+Esta version pasa el challenge 6, algunas veces.
 
 Es un poco burda porque envia las llamadas a todos los ascensores y
 envia el ascensor al piso 0 cuando esta idle.
@@ -35,14 +35,14 @@ Lo que agrego aqui es que ordeno la cola de pedidos con cada uno.
                 for (var elevatorNum in elevators) {
                     elevators[elevatorNum].goToFloor(floorNum);
                 }
-                console.log("Asked up floor " + floorNum);
+                console.log("Asked up on floor " + floorNum);
             }
             
             function downButtonPressedOnFloor(floorNum) {
                 for (var elevatorNum in elevators) {
                     elevators[elevatorNum].goToFloor(floorNum);
                 }
-                console.log("Asked down floor " + floorNum);
+                console.log("Asked down on floor " + floorNum);
             }
             
             function askedFloorOnElevator(floorNum, elevatorNum) {
@@ -53,29 +53,15 @@ Lo que agrego aqui es que ordeno la cola de pedidos con cada uno.
             
             function elevatorIsIdle(elevatorNum) {
                 elevators[elevatorNum].goToFloor(0);
+                updateRouteOnElevator(elevatorNum);
                 console.log("Elevator " + elevatorNum + "  idle");
             }
             
             function updateRouteOnElevator(elevatorNum) {
-                elevators[elevatorNum].destinationQueue = recalculateQueueForElevator(elevatorNum);
+                elevators[elevatorNum].destinationQueue.sort();
                 elevators[elevatorNum].checkDestinationQueue();
             }
-            
-            function recalculateQueueForElevator(elevatorNum) {
-                return elevators[elevatorNum].destinationQueue.sort();
-            }
         };
-        
-        function ElevatorDirectionStoped(elevator) {
-        }
-        
-        function ElevatorDirectionUp(elevator) {
-            this.elevator = elevator;
-        }
-        
-        function ElevatorDirectionUp(elevator) {
-            this.elevator = elevator;
-        }
         
         var boostraper = new ElevatorsBoostraper(elevators, floors);
     },
