@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 id="message">Welcome to Tennis 2.0</h2>
+<h2 id="errorMessage">@ViewBag.ErrorMessage</h2>
+
+<form action="/Home/Start" method="get">
+	<input type="text" name="player1" />
+	<input type="text" name="player2" />
+	<input type="submit" name="Start" />
+</form>
