@@ -1,0 +1,10 @@
+﻿X- Si juegan Federer y Nadal titulo debe ser "Federer vs Nadal"
+X- Si juegan Del Potro y Djokovic titulo debe ser "Del Potro vs Djokovic"
+- Si el partido recien comienza el marcador debe ser 0 - 0
+- Si el jugador 1 gana el primer punto el marcador debe ser 15 - 0
+- Si el jugador 1 gana dos puntos punto el marcador debe ser 30 - 0
+- Si el jugador 2 gana el primer punto el marcador debe ser 0 - 15
+- Si el jugador 2 gana tres puntos el marcador debe ser 0 - 40
+
+
+- Si el game esta 40 - 0 y el jugador 1 gana punto, el marcador debe ser 0 - 0

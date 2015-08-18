@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 id="message">@ViewBag.Title</h2>
+
+<h2 id="result">@ViewBag.Result</h2>
+
+<form action="PlayerOneScores">
+	<input type="submit" value="Point player 1" />
+</form>
+<form action="PlayerTwoScores">
+	<input type="submit" value="Point player 2" />
+</form>
