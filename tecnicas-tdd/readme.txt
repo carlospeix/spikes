@@ -1,7 +1,7 @@
 Referencias
 
 Test Data Builders
-http://nat.truemesh.com/archives/000714.html
+http://natpryce.com/articles/000714.html
 
 Object Mother
 http://www.c2.com/cgi/wiki?ObjectMother
